@@ -9,12 +9,9 @@ import javax.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
     private String message;
 
-    private final PrinterPort printerPort;
-
     @Inject
-    public HelloServlet(PrinterPort printerPort) {
-        this.printerPort = printerPort;
-    }
+    private PrinterPort printerPort;
+
 
     public void init() {
         message = "Hello World!";
