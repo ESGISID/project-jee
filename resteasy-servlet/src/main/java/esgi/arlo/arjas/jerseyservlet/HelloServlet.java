@@ -1,16 +1,14 @@
-package esgi.arlo.ajas.servlet;
+package esgi.arlo.arjas.jerseyservlet;
 
 import java.io.*;
-
-import esgi.arlo.ajas.servlet.ports.PrinterPort;
-import jakarta.inject.Inject;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import javax.inject.Inject;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-
     private String message;
+
     private final PrinterPort printerPort;
 
     @Inject
@@ -24,7 +22,7 @@ public class HelloServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-        printerPort.printResponse(response, message);
+        printerPort.printString(response, message);
     }
 
     public void destroy() {
