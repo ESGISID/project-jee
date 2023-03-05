@@ -2,8 +2,7 @@ package esgi.arlo.arjas.jerseyservlet.application.servlets;
 
 
 import esgi.arlo.arjas.jerseyservlet.domain.ports.in.PrinterPort;
-import esgi.arlo.arjas.jerseyservlet.domain.ports.out.UsersPersistencePort;
-import esgi.arlo.arjas.jerseyservlet.persistence.entities.UsersPersistenceService;
+import esgi.arlo.arjas.jerseyservlet.persistence.adaters.UsersPersistenceService;
 
 import java.io.*;
 import javax.annotation.security.PermitAll;

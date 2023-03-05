@@ -1,5 +1,5 @@
 <%@ page import="esgi.arlo.arjas.jerseyservlet.persistence.entities.UsersEntity" %>
-<%@ page import="esgi.arlo.arjas.jerseyservlet.persistence.entities.UsersPersistenceService" %>
+<%@ page import="esgi.arlo.arjas.jerseyservlet.persistence.adaters.UsersPersistenceService" %>
 <%@ page import="java.util.List" %>
 <jsp:include page="/views/Headers.jsp"/>
 <%--
