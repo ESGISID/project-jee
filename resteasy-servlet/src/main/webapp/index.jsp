@@ -8,6 +8,6 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="hello-servlet">request to sevlet hello-servlet -> add 2 users in persistence -> display users</a>
 </body>
 </html>
