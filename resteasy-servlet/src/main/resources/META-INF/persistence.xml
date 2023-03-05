@@ -2,7 +2,7 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="esgi.arlo.arjas">
         <description>Hibernate EntityManager</description>
-        <class>esgi.arlo.arjas.jerseyservlet.entities.UsersEntity</class>
+        <class>esgi.arlo.arjas.jerseyservlet.persistence.entities.UsersEntity</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

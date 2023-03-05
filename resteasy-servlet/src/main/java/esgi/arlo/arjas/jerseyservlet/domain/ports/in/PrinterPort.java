@@ -1,4 +1,4 @@
-package esgi.arlo.arjas.jerseyservlet;
+package esgi.arlo.arjas.jerseyservlet.domain.ports.in;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package esgi.arlo.arjas.jerseyservlet.qualifiers;
+package esgi.arlo.arjas.jerseyservlet.persistence.datasource;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;

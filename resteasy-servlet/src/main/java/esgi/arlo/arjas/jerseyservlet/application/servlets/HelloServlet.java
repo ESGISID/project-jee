@@ -1,8 +1,10 @@
-package esgi.arlo.arjas.jerseyservlet;
+package esgi.arlo.arjas.jerseyservlet.application.servlets;
 
-import esgi.arlo.arjas.jerseyservlet.entities.UsersService;
+import esgi.arlo.arjas.jerseyservlet.domain.ports.in.PrinterPort;
+import esgi.arlo.arjas.jerseyservlet.domain.ports.out.UsersPersistencePort;
 
 import java.io.*;
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -13,16 +15,19 @@ public class HelloServlet extends HttpServlet {
 
     @Inject
     private PrinterPort printerPort;
+    
+    @Inject
+    private UsersPersistencePort usersPersistencePort;
 
 
     public void init() {
         message = "Hello World!";
     }
 
+    @PermitAll
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-        UsersService service = new UsersService();
-        service.saveUser();
+        usersPersistencePort.saveUser("Armand","Jonathan");
         printerPort.printString(response, message);
     }
 

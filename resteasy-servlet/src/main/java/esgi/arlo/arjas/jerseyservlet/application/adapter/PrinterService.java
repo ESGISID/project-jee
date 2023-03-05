@@ -1,6 +1,6 @@
-package esgi.arlo.arjas.jerseyservlet.adapter;
+package esgi.arlo.arjas.jerseyservlet.application.adapter;
 
-import esgi.arlo.arjas.jerseyservlet.PrinterPort;
+import esgi.arlo.arjas.jerseyservlet.domain.ports.in.PrinterPort;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;

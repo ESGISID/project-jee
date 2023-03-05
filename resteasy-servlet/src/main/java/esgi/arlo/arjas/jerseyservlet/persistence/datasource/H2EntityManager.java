@@ -1,15 +1,11 @@
-package esgi.arlo.arjas.jerseyservlet.qualifiers;
+package esgi.arlo.arjas.jerseyservlet.persistence.datasource;
 
-
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.swing.text.html.parser.Entity;
 
-public class H2DataSource {
+public class H2EntityManager {
 
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("esgi.arlo.arjas");
     public static EntityManager entityManager() {

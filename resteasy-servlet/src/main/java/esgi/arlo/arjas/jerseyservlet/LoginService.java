@@ -1,15 +1,6 @@
 package esgi.arlo.arjas.jerseyservlet;
 
 
-import esgi.arlo.arjas.jerseyservlet.entities.UsersEntity;
-import esgi.arlo.arjas.jerseyservlet.qualifiers.LoggedIn;
-
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.io.Serializable;
-
 /**
 @SessionScoped
 @Named
