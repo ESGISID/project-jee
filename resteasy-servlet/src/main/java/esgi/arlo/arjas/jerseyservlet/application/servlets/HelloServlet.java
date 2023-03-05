@@ -31,7 +31,7 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("text/html");
         usersPersistenceService.saveUser("Armand","Jonathan");
         usersPersistenceService.saveUser("Sidbee","Sidbee");
-        response.sendRedirect(request.getContextPath() + "/ListUsers.jsp");
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 
     public void destroy() {
