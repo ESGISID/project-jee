@@ -1,6 +1,6 @@
-package esgi.arlo.arjas.jerseyservlet.adapter;
+package esgi.arlo.arjas.jerseyservlet.application.adapter;
 
-import esgi.arlo.arjas.jerseyservlet.PrinterPort;
+import esgi.arlo.arjas.jerseyservlet.domain.ports.in.PrinterPort;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
@@ -11,9 +11,11 @@ import java.io.PrintWriter;
 @Default
 @RequestScoped
 public class PrinterService implements PrinterPort {
+
     @Override
     public void printString(HttpServletResponse response, String messageToDisplay) throws IOException {
         PrintWriter out = response.getWriter();
-        out.println(messageToDisplay);
+        out.print(messageToDisplay);
+
     }
 }
