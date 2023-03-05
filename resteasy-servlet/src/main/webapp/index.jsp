@@ -1,13 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
+<jsp:include page="/views/Headers.jsp"/>
+<div style="margin: auto; padding: 25px 25px 25px 25px" class="container; text-center">
+	<jsp:include page="/HelloWorld.jsp"/>
+</div>
+<div style="margin: auto; padding: 25px 25px 25px 25px" class="container; text-center">
+
+<p>
+<%= request.getAttribute("message") != null ? request.getAttribute("message"):"" %>
+</p>
+<a href="${pageContext.request.contextPath}/hello-servlet">request to sevlet hello-servlet -> add 2 users in persistence -> says Hello</a>
+</div>
+
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
 </body>
 </html>
