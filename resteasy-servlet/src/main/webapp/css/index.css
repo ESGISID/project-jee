@@ -1,6 +1,11 @@
 body {
-    background: darkslategray;
-    color: wheat;
+    background: lightgray;
+    color: darkslategray;
     font-family: 'Lato', sans-serif;
+
+}
+
+a {
+    color: darkslategray;
 
 }

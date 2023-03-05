@@ -24,7 +24,7 @@ public class UsersPersistenceService implements Serializable {
         entityManager.getTransaction().commit();
     }
 
-    public static List<UsersEntity>  getAllUsers() {
+    public List<UsersEntity>  getAllUsers() {
         List<UsersEntity> responseFromDb = entityManager.createQuery( "from UsersEntity", UsersEntity.class ).getResultList();
         for (UsersEntity article : responseFromDb) {
             System.out.println( article );
