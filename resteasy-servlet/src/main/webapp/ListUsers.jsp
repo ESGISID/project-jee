@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="esgi.arlo.arjas.jerseyservlet.domain.pojos.Users" %>
+<%@ page import="esgi.arlo.arjas.resteasy.jee.servlet.domain.pojos.Users" %>
 <jsp:include page="/views/Headers.jsp"/>
 <%--
   Created by IntelliJ IDEA.
@@ -14,7 +14,7 @@
 			if (request.getAttribute("foundUsers") != null) {
 				for (Users user : (List<Users>) request.getAttribute("foundUsers")) { %>
 		<li class="list-group-item">
-			<%=user.getUsername()%> <%=user.getUsername()%>
+			<a href="${pageContext.request.contextPath}/user-details-servlet?username=<%=user.getUsername()%>"><%=user.getUsername()%>
 		</li>
 		<%
 				}
