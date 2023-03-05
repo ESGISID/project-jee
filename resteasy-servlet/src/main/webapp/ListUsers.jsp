@@ -1,6 +1,5 @@
-<%@ page import="esgi.arlo.arjas.jerseyservlet.persistence.entities.UsersEntity" %>
-<%@ page import="esgi.arlo.arjas.jerseyservlet.persistence.adaters.UsersPersistenceService" %>
 <%@ page import="java.util.List" %>
+<%@ page import="esgi.arlo.arjas.jerseyservlet.domain.pojos.Users" %>
 <jsp:include page="/views/Headers.jsp"/>
 <%--
   Created by IntelliJ IDEA.
@@ -13,9 +12,9 @@
 	<ul class="list-group" style="margin: auto;max-width: 300px" class="container;">
 		<%
 			if (request.getAttribute("foundUsers") != null) {
-				for (UsersEntity usersEntity : (List<UsersEntity>) request.getAttribute("foundUsers")) { %>
+				for (Users user : (List<Users>) request.getAttribute("foundUsers")) { %>
 		<li class="list-group-item">
-			<%=usersEntity.getUsername()%> <%=usersEntity.getUsername()%>
+			<%=user.getUsername()%> <%=user.getUsername()%>
 		</li>
 		<%
 				}

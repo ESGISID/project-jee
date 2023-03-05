@@ -1,8 +1,10 @@
 package esgi.arlo.arjas.jerseyservlet.persistence.adaters;
 
+import esgi.arlo.arjas.jerseyservlet.domain.pojos.Users;
 import esgi.arlo.arjas.jerseyservlet.domain.ports.out.UsersPersistencePort;
 import esgi.arlo.arjas.jerseyservlet.persistence.datasource.H2EntityManager;
 import esgi.arlo.arjas.jerseyservlet.persistence.entities.UsersEntity;
+import esgi.arlo.arjas.jerseyservlet.persistence.mappers.UsersMapper;
 
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Default;
@@ -10,6 +12,8 @@ import javax.persistence.EntityManager;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Default
 @SessionScoped
 public class UsersPersistenceService implements UsersPersistencePort, Serializable  {
@@ -26,19 +30,16 @@ public class UsersPersistenceService implements UsersPersistencePort, Serializab
     }
 
     @Override
-    public UsersEntity findUser(String username) {
+    public Users findUser(String username) {
         UsersEntity usersEntity = new UsersEntity();
         usersEntity.setUsername(username);
-        return entityManager.find(  UsersEntity.class, usersEntity );
+        return UsersMapper.toDomain(entityManager.find(  UsersEntity.class, usersEntity ));
     }
 
 
     @Override
-    public List<UsersEntity>  getAllUsers() {
+    public List<Users>  getAllUsers() {
         List<UsersEntity> responseFromDb = entityManager.createQuery( "from UsersEntity", UsersEntity.class ).getResultList();
-        for (UsersEntity article : responseFromDb) {
-            System.out.println( article );
-        }
-        return responseFromDb;
+        return responseFromDb.stream().map(UsersMapper::toDomain).collect(Collectors.toList());
     }
 }
