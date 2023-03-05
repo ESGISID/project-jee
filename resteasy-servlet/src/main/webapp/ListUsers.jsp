@@ -9,16 +9,19 @@
   Time: 12:23
   To change this template use File | Settings | File Templates.
 --%>
-<ul>
-	<%
-		if (request.getAttribute("foundUsers") != null) {
-			for (UsersEntity usersEntity : (List<UsersEntity>) request.getAttribute("foundUsers")) { %>
-	<li><%=usersEntity.getUsername()%> <%=usersEntity.getUsername()%>
-	</li>
-	<%
+<div style="margin: auto; padding: 25px 25px 25px 25px" class="container; text-center">
+	<ul class="list-group" style="margin: auto;max-width: 300px" class="container;">
+		<%
+			if (request.getAttribute("foundUsers") != null) {
+				for (UsersEntity usersEntity : (List<UsersEntity>) request.getAttribute("foundUsers")) { %>
+		<li class="list-group-item">
+			<%=usersEntity.getUsername()%> <%=usersEntity.getUsername()%>
+		</li>
+		<%
+				}
 			}
-		}
-	%>
-</ul>
+		%>
+	</ul>
+</div>
 
 

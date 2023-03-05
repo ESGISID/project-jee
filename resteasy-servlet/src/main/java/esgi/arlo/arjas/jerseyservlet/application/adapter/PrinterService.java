@@ -15,7 +15,7 @@ public class PrinterService implements PrinterPort {
     @Override
     public void printString(HttpServletResponse response, String messageToDisplay) throws IOException {
         PrintWriter out = response.getWriter();
-        out.println(messageToDisplay);
+        out.print(messageToDisplay);
 
     }
 }

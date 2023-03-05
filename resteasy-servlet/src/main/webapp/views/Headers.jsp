@@ -10,6 +10,8 @@
 <html>
   <head>
     <title>MyApp</title>
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/images/moankaisa.ico">
+    
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

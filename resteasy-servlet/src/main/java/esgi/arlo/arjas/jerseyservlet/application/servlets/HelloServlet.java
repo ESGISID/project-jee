@@ -27,10 +27,11 @@ public class HelloServlet extends HttpServlet {
     }
 
     @PermitAll
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         usersPersistenceService.saveUser("Armand","Jonathan");
         usersPersistenceService.saveUser("Sidbee","Sidbee");
-        printerPort.printString(response, message);
+        request.setAttribute("message", message);
+        request.getRequestDispatcher("/index.jsp").forward(request,response);
     }
 
     public void destroy() {
