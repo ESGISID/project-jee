@@ -17,13 +17,21 @@ public class UsersPersistenceService implements UsersPersistencePort, Serializab
 
     @Override
     public void saveUser(String username, String password) {
-        entityManager.getTransaction().begin();
         UsersEntity usersEntity = new UsersEntity();
         usersEntity.setUsername(username);
         usersEntity.setPassword(password);
+        entityManager.getTransaction().begin();
         entityManager.persist(usersEntity);
         entityManager.getTransaction().commit();
     }
+
+    @Override
+    public UsersEntity findUser(String username) {
+        UsersEntity usersEntity = new UsersEntity();
+        usersEntity.setUsername(username);
+        return entityManager.find(  UsersEntity.class, usersEntity );
+    }
+
 
     @Override
     public List<UsersEntity>  getAllUsers() {

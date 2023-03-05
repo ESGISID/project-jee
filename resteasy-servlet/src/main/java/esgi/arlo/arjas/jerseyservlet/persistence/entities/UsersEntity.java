@@ -1,6 +1,7 @@
 package esgi.arlo.arjas.jerseyservlet.persistence.entities;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
