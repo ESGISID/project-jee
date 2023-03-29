@@ -14,7 +14,7 @@
 			if (request.getAttribute("foundUsers") != null) {
 				for (Users user : (List<Users>) request.getAttribute("foundUsers")) { %>
 		<li class="list-group-item">
-			<a href="${pageContext.request.contextPath}/user-details-servlet?username=<%=user.getUsername()%>"><%=user.getUsername()%>
+			<a href='${pageContext.request.contextPath}/user-details-servlet?username=<%=user.getUsername()%>'><%=user.getUsername()%>
 		</li>
 		<%
 				}

@@ -15,11 +15,26 @@ public class UsersEntity {
 
     @NotNull
     @Length(min=3, max=25)
-    private String username;
+    private String name;
 
     @NotNull
     @Length(min=6, max=20)
     private  String password;
+
+    @NotNull
+    private int value;
+
+    @NotNull
+    @Length(min=6, max=20)
+    private  String someCode;
+    public String getSomeCode() {
+        return someCode;
+    }
+
+    public void setSomeCode(String someCode) {
+        this.someCode = someCode;
+    }
+
 
     public Long getId() {
         return id;
@@ -29,31 +44,41 @@ public class UsersEntity {
         this.id = id;
     }
 
-    public String getUsername() { return username; }
+    public String getName() { return name; }
     public String getPassword() { return password; }
 
-    public void setUsername(String username) { this.username = username; }
+    public void setName(String username) { this.name = username; }
     public void setPassword(String password) { this.password = password; }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         UsersEntity that = (UsersEntity) o;
-        return id.equals(that.id) && username.equals(that.username) && password.equals(that.password);
+
+        if (value != that.value) return false;
+        if (!Objects.equals(id, that.id)) return false;
+        if (!name.equals(that.name)) return false;
+        if (!password.equals(that.password)) return false;
+        return someCode.equals(that.someCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password);
-    }
-
-    @Override
-    public String toString() {
-        return "UsersEntity{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + value;
+        result = 31 * result + someCode.hashCode();
+        return result;
     }
 }

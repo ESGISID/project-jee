@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public interface UsersPersistencePort {
-    void saveUser(String username, String password);
+    void saveUser(String username, String password, int value, String someCode);
 
     Users findUser(String username);
 

@@ -1,5 +1,6 @@
 package esgi.arlo.arjas.resteasy.jee.servlet.persistence.adaters;
 
+import esgi.arlo.arjas.resteasy.jee.servlet.domain.SomeAppException;
 import esgi.arlo.arjas.resteasy.jee.servlet.domain.pojos.Users;
 import esgi.arlo.arjas.resteasy.jee.servlet.domain.ports.out.UsersPersistencePort;
 import esgi.arlo.arjas.resteasy.jee.servlet.persistence.datasource.H2EntityManager;
@@ -9,9 +10,12 @@ import esgi.arlo.arjas.resteasy.jee.servlet.persistence.mappers.UsersMapper;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Default
@@ -20,20 +24,34 @@ public class UsersPersistenceService implements UsersPersistencePort, Serializab
     private static final EntityManager entityManager = H2EntityManager.entityManager();
 
     @Override
-    public void saveUser(String username, String password) {
+    public void saveUser(String username, String password, int value, String someCode) {
         UsersEntity usersEntity = new UsersEntity();
-        usersEntity.setUsername(username);
+        usersEntity.setName(username);
         usersEntity.setPassword(password);
-        entityManager.getTransaction().begin();
-        entityManager.persist(usersEntity);
-        entityManager.getTransaction().commit();
+        usersEntity.setValue(value);
+        usersEntity.setSomeCode(someCode);
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(usersEntity);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            throw new SomeAppException(e.getMessage());
+        }
     }
 
     @Override
     public Users findUser(String username) {
-        UsersEntity usersEntity = new UsersEntity();
-        usersEntity.setUsername(username);
-        return UsersMapper.toDomain(entityManager.find(  UsersEntity.class, usersEntity ));
+        try {
+
+            entityManager.createQuery("from UsersEntity u WHERE u.name = :name", UsersEntity.class)
+                .setParameter("name", username)
+                .getSingleResult();
+        } catch (NoResultException e){
+            throw new SomeAppException("lolilol");
+        }
+        return UsersMapper.toDomain(entityManager.createQuery("from UsersEntity u WHERE u.name = :name", UsersEntity.class)
+                .setParameter("name", username)
+                .getSingleResult());
     }
 
 

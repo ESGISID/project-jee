@@ -28,8 +28,6 @@ public class SearchServlet extends HttpServlet {
 
     @PermitAll
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println(request.getParameter("username"));
-        LOGGER.log(Level.INFO, "Logging user with username {0}", request.getParameter("username"));
         List<Users> found = usersPersistenceService.getAllUsers();
         request.setAttribute("foundUsers", found);
         LOGGER.log(Level.INFO, "Found user {0}", found);

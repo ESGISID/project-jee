@@ -34,11 +34,11 @@ public class HelloServlet extends HttpServlet {
     @PermitAll
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         if(usersPersistenceService.getAllUsers().size() == 0){
-            usersPersistenceService.saveUser("Armand Dailly","monmot2pass");
-            usersPersistenceService.saveUser("Sid Bee","monmot2pass");
-            usersPersistenceService.saveUser("Arnaud Jourdain","monmot2pass");
-            usersPersistenceService.saveUser("Denis Turbiez","monmot2pass");
-            usersPersistenceService.saveUser("Enzo Soares","monmot2pass");
+            usersPersistenceService.saveUser("Armand Dailly","monmot2pass", 100, "A code");
+            usersPersistenceService.saveUser("Sid Bee","monmot2pass", 420, "Ashe addict");
+            usersPersistenceService.saveUser("Arnaud Jourdain","monmot2pass", 300, "Cuda sensei");
+            usersPersistenceService.saveUser("Denis Turbiez","monmot2pass", 1, "Fils du C");
+            usersPersistenceService.saveUser("Enzo Soares","monmot2pass", 105, "React afficionado");
 
         }
         request.setAttribute("message", message);

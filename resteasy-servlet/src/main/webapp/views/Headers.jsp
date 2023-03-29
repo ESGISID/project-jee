@@ -34,13 +34,14 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
+							<a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
+							<a class="nav-link" href="${pageContext.request.contextPath}/search-servlet">List users</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							<a class="nav-link dropdown-toggle"
+							   id="navbarDropdown" role="button"
 							   data-bs-toggle="dropdown" aria-expanded="false">
 								Dropdown
 							</a>
@@ -57,7 +58,7 @@
 							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 						</li>
 					</ul>
-					<form class="d-flex" action = "${pageContext.request.contextPath}/search-servlet" method = "GET">
+					<form class="d-flex" action = "${pageContext.request.contextPath}/user-details-servlet" method = "GET">
 						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  name="username" style="width: 180px">
 						<button class="btn btn-outline-success" type="submit" style="width: 140px">Search users</button>
 					</form>
