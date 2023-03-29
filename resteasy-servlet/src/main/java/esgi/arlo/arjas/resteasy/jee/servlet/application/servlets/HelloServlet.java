@@ -1,6 +1,7 @@
 package esgi.arlo.arjas.resteasy.jee.servlet.application.servlets;
 
 import esgi.arlo.arjas.resteasy.jee.servlet.domain.ports.in.PrinterPort;
+import esgi.arlo.arjas.resteasy.jee.servlet.domain.ports.out.UsersPersistencePort;
 import esgi.arlo.arjas.resteasy.jee.servlet.persistence.adaters.UsersPersistenceService;
 
 import java.io.*;
@@ -14,11 +15,16 @@ import javax.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
     private String message;
 
+    private final PrinterPort printerPort;
+
+    private final UsersPersistencePort usersPersistenceService;
+
     @Inject
-    private PrinterPort printerPort;
-    
-    @Inject
-    private UsersPersistenceService usersPersistenceService;
+    public HelloServlet(PrinterPort printerPort, UsersPersistencePort usersPersistenceService) {
+        this.printerPort = printerPort;
+        this.usersPersistenceService = usersPersistenceService;
+
+    }
 
 
     public void init() {
@@ -30,6 +36,10 @@ public class HelloServlet extends HttpServlet {
         if(usersPersistenceService.getAllUsers().size() == 0){
             usersPersistenceService.saveUser("Armand Dailly","monmot2pass");
             usersPersistenceService.saveUser("Sid Bee","monmot2pass");
+            usersPersistenceService.saveUser("Arnaud Jourdain","monmot2pass");
+            usersPersistenceService.saveUser("Denis Turbiez","monmot2pass");
+            usersPersistenceService.saveUser("Enzo Soares","monmot2pass");
+
         }
         request.setAttribute("message", message);
         request.getRequestDispatcher("/index.jsp").forward(request,response);
